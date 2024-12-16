@@ -15,8 +15,7 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import vSelect from 'vue-select'
 import './styles/sweetalert2.css'
 import 'vue-select/dist/vue-select.css'
-import Highcharts from 'highcharts'
-import HighchartsVue from 'highcharts-vue'
+
 import VCalendar from 'v-calendar';
 import 'v-calendar/style.css';
 
@@ -49,9 +48,9 @@ const vueLifecycles = singleSpaVue({
     app.use(VueSweetalert2)
     app.component('CIcon', CIcon)
     app.component('v-select', vSelect)
-    app.use(HighchartsVue, {
-      highcharts: Highcharts
-    })
+    // app.use(HighchartsVue, {
+    //   highcharts: Highcharts
+    // })
     app.use(VCalendar, {})
   },
 })
