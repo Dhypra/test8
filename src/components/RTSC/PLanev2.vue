@@ -84,79 +84,86 @@
         </CCardBody>
       </CCard>
 
-<!-- Critical Part -->
+      <!-- Critical Part -->
 
-<CCard class="content content3">
-    <div class="title">Critical Part</div>
+      <CCard class="content content3">
+        <div class="title">Critical Part</div>
 
-    <CCardBody class="container text-center p-0">
-      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 m-0">
-        <div
-          class="col cTable cCard"
-          style="border-radius: 10px"
-          v-for="(part, index) in criticalPart"
-          :key="index"
-        >
-          <div class="title fZ1">{{ part.part }}</div>
-          <div class="fZ2">{{ part.stockMinute }}Min</div>
-          <div class="fZ1 cPartCard">
-            {{ index + 10 }}
+        <CCardBody class="container text-center p-0">
+          <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 m-0">
+            <div
+              class="col cTable cCard"
+              style="border-radius: 10px"
+              v-for="(part, index) in criticalPart"
+              :key="index"
+            >
+              <div class="title fZ1">{{ part.part }}</div>
+              <div class="fZ2">{{ part.stockMinute }}Min</div>
+              <div class="fZ1 cPartCard">
+                {{ index + 10 }}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </CCardBody>
-  </CCard>
+        </CCardBody>
+      </CCard>
 
       <!-- Out PLane -->
       <CCard class="content content4">
         <div class="title">Out P-Lane</div>
         <CCardBody className="d-flex bT">
           <CCard class="cCard" className="col-6">
-            <CCardBody className="d-flex flex-row bR">
+            <CCardBody className="d-flex flex-row bR" style="height: 110%">
               <CCard className="col-6 bR">
                 <div class="title">P-Lane</div>
-                <div  > 8 </div>
+                <div style="font-size: 7rem">8</div>
               </CCard>
               <CCard class="cCard" className="col-6">
                 <div class="title">Counter</div>
-                <div> 10 </div>
+                <div style="font-size: 7rem">10</div>
               </CCard>
             </CCardBody>
-            <div class="title footer" style="width: 50%"
-              >10 Min left
-            </div>
+            <div class="title footer" style="width: 50%">10 Min left</div>
           </CCard>
-          <CCard class="cCard" className="col-6">
-            <div class="title row zero border list">
-              <div
-                class="title"
-                className="col-8 zero "
-                style="background-color: #4cadab; height: 2.9rem"
-              >
-                Fill In
+          <CCard
+            class="cCard"
+            className="col-6"
+            style="height: 100%; background-color: red"
+          >
+            <div class="row zero">
+              <div className=" col-9 zero">
+                <div class="title">Fill In</div>
               </div>
-              <div className="col-4 zero bG3">1/5</div>
+              <div className=" col-3 zero bG3 ">1/5</div>
             </div>
-
-            <CCardBody class="p-0">
-              <div class="title row zero border list">
-                <div className="col-6 zero bG1">AIA</div>
-                <div className="col-3 zero border-left-0 bG3">10</div>
-                <div className="col-3 zero border-left-0 bG2">18</div>
-              </div>
-              <div class="title row zero border list">
-                <div className="col-6 zero bG1">AIA</div>
-                <div className="col-3 zero border-left-0 bG3">10</div>
-                <div className="col-3 zero border-left-0 bG2">18</div>
-              </div>
-              <div class="title row zero border list">
-                <div className="col-6 zero bG1">AIA</div>
-                <div className="col-3 zero border-left-0 bG3">10</div>
-                <div className="col-3 zero border-left-0 bG2">18</div>
-              </div>
-
-             
-            </CCardBody>
+            <div style="height: 106%; overflow: hidden;">
+              <CCardBody class="p-0">
+                <div class="title row zero border" >
+                  <div className="col-6 zero bG1">AIA</div>
+                  <div className="col-3 zero border-left-0 bG3">10</div>
+                  <div className="col-3 zero border-left-0 bG2">18</div>
+                </div>
+                <div class="title row zero border" >
+                  <div className="col-6 zero bG1">AIA</div>
+                  <div className="col-3 zero border-left-0 bG3">10</div>
+                  <div className="col-3 zero border-left-0 bG2">18</div>
+                </div>
+                <div class="title row zero border" >
+                  <div className="col-6 zero bG1">AIA</div>
+                  <div className="col-3 zero border-left-0 bG3">10</div>
+                  <div className="col-3 zero border-left-0 bG2">18</div>
+                </div>
+                <div class="title row zero border" >
+                  <div className="col-6 zero bG1">AIA</div>
+                  <div className="col-3 zero border-left-0 bG3">10</div>
+                  <div className="col-3 zero border-left-0 bG2">18</div>
+                </div>
+                <div class="title row zero border" >
+                  <div className="col-6 zero bG1">AIA</div>
+                  <div className="col-3 zero border-left-0 bG3">10</div>
+                  <div className="col-3 zero border-left-0 bG2">18</div>
+                </div>
+              </CCardBody>
+            </div>
           </CCard>
         </CCardBody>
       </CCard>
@@ -182,7 +189,9 @@ export default {
         .sort((a, b) => a.stockMinute - b.stockMinute)
         .slice(0, 10),
       underTwenty: data.parts.filter((part) => part.stockMinute < 20),
-      underAHour: data.parts.filter((part) => part.stockMinute > 20&&part.stockMinute<60),
+      underAHour: data.parts.filter(
+        (part) => part.stockMinute > 20 && part.stockMinute < 60,
+      ),
       aboveAHour: data.parts.filter((part) => part.stockMinute > 60),
     }
   },
@@ -221,11 +230,10 @@ export default {
     // Get Height Monitor
     setFullHeight() {
       document.querySelector('.andon-container').style.height =
-        window.innerHeight + 'px'   
-      document.querySelector('.andon-header').style.height =
-        window.innerHeight*0.3 + 'px'   
+        window.innerHeight + 'px'
+
       document.querySelector('.content').style.height =
-        window.innerHeight*0.35-15 + 'px'   
+        window.innerHeight * 0.35 - 15 + 'px'
     },
 
     // Setting Time
@@ -338,10 +346,10 @@ export default {
 }
 
 .content3 {
-  flex: 0 0 59%; /* Lebar 60% */
+  flex: 0 0 54%; /* Lebar 60% */
 }
 
 .content4 {
-  flex: 0 0 40%; /* Lebar 40% */
+  flex: 0 0 45%; /* Lebar 40% */
 }
 </style>
