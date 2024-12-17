@@ -221,7 +221,11 @@ export default {
     // Get Height Monitor
     setFullHeight() {
       document.querySelector('.andon-container').style.height =
-        window.innerHeight + 'px'
+        window.innerHeight + 'px'   
+      document.querySelector('.andon-header').style.height =
+        window.innerHeight*0.3 + 'px'   
+      document.querySelector('.content').style.height =
+        window.innerHeight*0.35-15 + 'px'   
     },
 
     // Setting Time
