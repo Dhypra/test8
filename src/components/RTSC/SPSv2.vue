@@ -1,6 +1,6 @@
 <template>
   <div class="andon-container">
-    <div class="header">STOCK SPS</div>
+    <div class="andon-header">STOCK SPS</div>
     <div class="content-container">
       <div class="content content1">Content 1</div>
       <div class="content content2">Content 2</div>
@@ -65,7 +65,7 @@ export default {
 }
 
 /* Header */
-.header {
+.andon-header {
   text-align: center;
   font-size: 5em;
   font-weight: bold;

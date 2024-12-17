@@ -125,7 +125,7 @@ const routes = [
   {
     path: '/app/andon/pline',
     name: 'pline',
-    component: () => import('@/components/RTSC/PLine.vue'),
+    component: () => import('@/components/RTSC/PLanev2.vue'),
     meta: { layout: 'displayRTSC' },
   },
   {
