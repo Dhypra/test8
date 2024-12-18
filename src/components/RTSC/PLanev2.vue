@@ -38,11 +38,19 @@
       <!-- Stock Chart -->
       <CCard class="content content1">
         <div class="title">Stock Chart</div>
-        <CCardBody>
+
+        <div style="width: 100%;">
+          <CCard style="width: 30%" class="cCard chartPline">
+            <div class="title">P-Lane</div>
+            <CCardBody className="chartCard d-flex flex-row bT">
+              <CCard className="col-6 bR fC cardA">10</CCard>
+              <CCard className="col-6 fC cardA">10</CCard>
+            </CCardBody>
+          </CCard>
           <CCardText>
             <div id="chart"></div>
           </CCardText>
-        </CCardBody>
+        </div>
       </CCard>
 
       <!-- Next Delivery -->
@@ -113,7 +121,7 @@
       <!-- Out PLane -->
       <CCard class="content content4">
         <div class="title">Out P-Lane</div>
-        <CCardBody className="d-flex bT" >
+        <CCardBody className="d-flex bT">
           <CCard class="cCard" className="col-6">
             <CCardBody className="d-flex flex-row bR" style="height: 100%">
               <CCard className="col-6 bR">
@@ -130,7 +138,7 @@
           <CCard
             class="cCard"
             className="col-6"
-            style="height: 110%; background-color: red;overflow: hidden;"
+            style="height: 110%; background-color: red; overflow: hidden"
           >
             <div class="row zero">
               <div className=" col-9 zero">
@@ -141,33 +149,47 @@
               </div>
             </div>
             <div style="height: 100%; overflow: hidden">
-              <CCardBody class="p-0"style="height: 100%;">
-                <div style="height: 18%;font-size:1.3rem" class="title row zero border">
+              <CCardBody class="p-0" style="height: 100%">
+                <div
+                  style="height: 18%; font-size: 1.3rem"
+                  class="title row zero border"
+                >
                   <div className="col-6 zero bG1">AIA</div>
                   <div className="col-3 zero border-left-0 bG3">10</div>
                   <div className="col-3 zero border-left-0 bG2">18</div>
                 </div>
-                <div style="height: 18%;font-size:1.3rem" class="title row zero border">
+                <div
+                  style="height: 18%; font-size: 1.3rem"
+                  class="title row zero border"
+                >
                   <div className="col-6 zero bG1">AIA</div>
                   <div className="col-3 zero border-left-0 bG3">10</div>
                   <div className="col-3 zero border-left-0 bG2">18</div>
                 </div>
-                <div style="height: 18%;font-size:1.3rem" class="title row zero border">
+                <div
+                  style="height: 18%; font-size: 1.3rem"
+                  class="title row zero border"
+                >
                   <div className="col-6 zero bG1">AIA</div>
                   <div className="col-3 zero border-left-0 bG3">10</div>
                   <div className="col-3 zero border-left-0 bG2">18</div>
                 </div>
-                <div style="height: 18%;font-size:1.3rem" class="title row zero border">
+                <div
+                  style="height: 18%; font-size: 1.3rem"
+                  class="title row zero border"
+                >
                   <div className="col-6 zero bG1">AIA</div>
                   <div className="col-3 zero border-left-0 bG3">10</div>
                   <div className="col-3 zero border-left-0 bG2">18</div>
                 </div>
-                <div style="height: 18%;font-size:1.3rem" class="title row zero border">
+                <div
+                  style="height: 18%; font-size: 1.3rem"
+                  class="title row zero border"
+                >
                   <div className="col-6 zero bG1">AIA</div>
                   <div className="col-3 zero border-left-0 bG3">10</div>
                   <div className="col-3 zero border-left-0 bG2">18</div>
                 </div>
-                
               </CCardBody>
             </div>
           </CCard>
@@ -193,8 +215,8 @@ export default {
       currentTime: '',
       today: '',
       shift: '',
-      heightScreen:null,
-      widthScreen:null,
+      heightScreen: null,
+      widthScreen: null,
 
       criticalPart: data.parts
         .filter((part) => part.stockMinute > 10)
@@ -235,8 +257,8 @@ export default {
     var options = {
       chart: {
         type: 'bar',
-        height: this.heightScreen*0.32, // Set the height
-        width: this.weidthScreen*0.9, // Set the width
+        height: this.heightScreen * 0.4, // Set the height
+        width: this.weidthScreen , // Set the width
       },
       series: [
         {
@@ -347,16 +369,16 @@ export default {
         window.innerHeight + 'px'
 
       document.querySelector('.content1').style.height =
-        window.innerHeight * 0.38+ 'px'
+        window.innerHeight * 0.38 + 'px'
       document.querySelector('.content2').style.height =
-        window.innerHeight * 0.38+ 'px'
+        window.innerHeight * 0.38 + 'px'
       document.querySelector('.content3').style.height =
-        window.innerHeight * 0.37+ 'px'
+        window.innerHeight * 0.37 + 'px'
       document.querySelector('.content4').style.height =
-        window.innerHeight * 0.37+ 'px'
+        window.innerHeight * 0.37 + 'px'
 
-        this.heightScreen = window.innerHeight
-        this.weidthScreen = window.innerHeight
+      this.heightScreen = window.innerHeight
+      this.weidthScreen = window.innerHeight
     },
 
     // Setting Time

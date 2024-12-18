@@ -202,7 +202,7 @@ border: 0;
 .chartCard {
   height: 16vh;
   font-size: 5vh;
-  width: 20rem;
+  /* width: 100%; */
 }
 .cardA{
   padding-top: 2vh;
