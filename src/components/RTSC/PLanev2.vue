@@ -92,7 +92,7 @@
       <CCard class="content content3">
         <div class="title">Critical Part</div>
 
-        <CCardBody class="container text-center p-0">
+        <CCardBody style="overflow: hidden" class="container text-center p-0">
           <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 m-0">
             <div
               class="col cTable cCard"
@@ -101,7 +101,7 @@
               :key="index"
             >
               <div class="title fZ1">{{ part.part }}</div>
-              <div class="fZ2">{{ part.stockMinute }}Min</div>
+              <div style="font-size: 2.2rem">{{ part.stockMinute }}Min</div>
               <div class="fZ1 cPartCard">
                 {{ index + 10 }}
               </div>
@@ -113,7 +113,7 @@
       <!-- Out PLane -->
       <CCard class="content content4">
         <div class="title">Out P-Lane</div>
-        <CCardBody className="d-flex bT">
+        <CCardBody className="d-flex bT" >
           <CCard class="cCard" className="col-6">
             <CCardBody className="d-flex flex-row bR" style="height: 100%">
               <CCard className="col-6 bR">
@@ -130,7 +130,7 @@
           <CCard
             class="cCard"
             className="col-6"
-            style="height: 100%; background-color: red"
+            style="height: 110%; background-color: red;overflow: hidden;"
           >
             <div class="row zero">
               <div className=" col-9 zero">
@@ -140,33 +140,34 @@
                 <div class="title bG3">1/5</div>
               </div>
             </div>
-            <div style="height: 106%; overflow: hidden">
-              <CCardBody class="p-0">
-                <div class="title row zero border">
+            <div style="height: 100%; overflow: hidden">
+              <CCardBody class="p-0"style="height: 100%;">
+                <div style="height: 18%;font-size:1.3rem" class="title row zero border">
                   <div className="col-6 zero bG1">AIA</div>
                   <div className="col-3 zero border-left-0 bG3">10</div>
                   <div className="col-3 zero border-left-0 bG2">18</div>
                 </div>
-                <div class="title row zero border">
+                <div style="height: 18%;font-size:1.3rem" class="title row zero border">
                   <div className="col-6 zero bG1">AIA</div>
                   <div className="col-3 zero border-left-0 bG3">10</div>
                   <div className="col-3 zero border-left-0 bG2">18</div>
                 </div>
-                <div class="title row zero border">
+                <div style="height: 18%;font-size:1.3rem" class="title row zero border">
                   <div className="col-6 zero bG1">AIA</div>
                   <div className="col-3 zero border-left-0 bG3">10</div>
                   <div className="col-3 zero border-left-0 bG2">18</div>
                 </div>
-                <div class="title row zero border">
+                <div style="height: 18%;font-size:1.3rem" class="title row zero border">
                   <div className="col-6 zero bG1">AIA</div>
                   <div className="col-3 zero border-left-0 bG3">10</div>
                   <div className="col-3 zero border-left-0 bG2">18</div>
                 </div>
-                <div class="title row zero border">
+                <div style="height: 18%;font-size:1.3rem" class="title row zero border">
                   <div className="col-6 zero bG1">AIA</div>
                   <div className="col-3 zero border-left-0 bG3">10</div>
                   <div className="col-3 zero border-left-0 bG2">18</div>
                 </div>
+                
               </CCardBody>
             </div>
           </CCard>
@@ -234,7 +235,7 @@ export default {
     var options = {
       chart: {
         type: 'bar',
-        height: this.heightScreen*0.25, // Set the height
+        height: this.heightScreen*0.32, // Set the height
         width: this.weidthScreen*0.9, // Set the width
       },
       series: [
@@ -345,8 +346,14 @@ export default {
       document.querySelector('.andon-container').style.height =
         window.innerHeight + 'px'
 
-      document.querySelector('.content').style.height =
-        window.innerHeight * 0.33 - 15 + 'px'
+      document.querySelector('.content1').style.height =
+        window.innerHeight * 0.38+ 'px'
+      document.querySelector('.content2').style.height =
+        window.innerHeight * 0.38+ 'px'
+      document.querySelector('.content3').style.height =
+        window.innerHeight * 0.37+ 'px'
+      document.querySelector('.content4').style.height =
+        window.innerHeight * 0.37+ 'px'
 
         this.heightScreen = window.innerHeight
         this.weidthScreen = window.innerHeight

@@ -270,9 +270,10 @@ border: 0;
 }
 
 .cTable {
-  height: 18vh;
+  height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .cTable div {
   padding: 0;
