@@ -1,0 +1,2 @@
+export const PORT = 5000;
+export const url = "mongodb://Dhahypra:Dhahypra@module-shard-00-00.fa0yw.mongodb.net:27017,module-shard-00-01.fa0yw.mongodb.net:27017,module-shard-00-02.fa0yw.mongodb.net:27017/?ssl=true&replicaSet=atlas-u6eb4f-shard-0&authSource=admin&retryWrites=true&w=majority&appName=module";
