@@ -2,7 +2,7 @@
   <div class="andon-container">
     <div class="andon-header">STOCK SPS</div>
     <div class="content-container">
-      <div class="content content1">Content 1</div>
+      <div class="content content1">{{FullScreen}}</div>
       <div class="content content2">Content 2</div>
       <div class="content content3">Content 3</div>
       <div class="content content4">Conten 4</div>
@@ -13,6 +13,12 @@
 <script>
 export default {
   name: 'spsv2',
+  data() {
+    return {
+      FullScreen: null
+      
+    }
+  },
   mounted() {
     // Request fullscreen when the component is mounted
     this.enterFullScreen()
@@ -41,6 +47,8 @@ export default {
       // Menyesuaikan tinggi elemen dengan tinggi layar
       document.querySelector('.andon-container').style.height =
         window.innerHeight + 'px'
+
+                this.FullScreen = window.innerHeight + 'px '+'x '+window.innerWidth+ 'px'
     },
   },
   beforeDestroy() {
