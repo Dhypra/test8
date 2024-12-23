@@ -131,7 +131,7 @@ const routes = [
   {
     path: '/app/andon/importpart',
     name: 'importpart',
-    component: () => import('@/components/RTSC/ImportPart.vue'),
+    component: () => import('@/components/RTSC/ImportPartv2.vue'),
     meta: { layout: 'displayRTSC' },
   },
   {

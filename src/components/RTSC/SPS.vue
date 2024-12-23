@@ -34,7 +34,7 @@
     </button> -->
 
       <RTSCHead :area="area" class="m-2" />
-    <div class="main-container">
+      <div class="row justify-content-between" style="width: 100%;margin: 0">
       <StockChart
         class="col-lg-7 col-12 m-2"
         style="width: 70%"

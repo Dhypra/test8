@@ -170,7 +170,7 @@
   -webkit-filter: p-sa0d302ow(0 30px 10px rgba(0, 0, 0, 0.125));
 }
 .cCardH {
- 
+ height: 34vh;
 }
 .pCard {
   background-color: red !important;
@@ -184,7 +184,7 @@
 }
 
 .list {
-  font-size: 2vh;
+  font-size: 3.2vh;
   border: 0;
 }
 .zero{
