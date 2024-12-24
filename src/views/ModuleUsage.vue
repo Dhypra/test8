@@ -38,7 +38,7 @@
 import FreshModule from './FreshModule.vue'
 import Tapping from './TappingModule.vue'
 import Overflow from './OverflowModule.vue'
-import Summary from './Summary.vue'
+import Summary from '../components/RTSC/Summary.vue'
 export default {
   components: {
     FreshModule,

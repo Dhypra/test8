@@ -101,7 +101,7 @@ const routes = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import('@/views/Summary.vue'),
+        component: () => import('@/components/RTSC/Summary.vue'),
         meta: { layout: 'displayRTSC' },
       },
       {
@@ -110,7 +110,16 @@ const routes = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import('@/views/Unpacking.vue'),
+        component: () => import('@/components/RTSC/Unpacking.vue'),
+        meta: { layout: 'displayRTSC' },
+      },
+      {
+        path: '/app/managementOF',
+        name: 'ManagementOF',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import('@/components/RTSC/ManagementOF.vue'),
         meta: { layout: 'displayRTSC' },
       },
     ],

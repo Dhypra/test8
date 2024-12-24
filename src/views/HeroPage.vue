@@ -1,29 +1,22 @@
 <template>
+<div
+style="background-image: url('src/assets/images/logisplay.gif');
+    background-size: cover;
+    
+    
+    
+    height: 100vh;
+    padding:0;
+    margin:0;">
 
-  
-  <video
-  autoplay
-    muted
-    loop
-    id="myVideo"
-    style="
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 90%;
-      filter: brightness(50%)
-    "
-  >
-    <source src="@/assets/images/video.mp4" type="video/mp4" />
-  </video>
   <NavBar :userName='userId' :logout='logout'/>
   <div style="position: fixed;color: wheat;" @click="logout">
-
+    
     <!-- <p>User ID: {{ userId }}</p>
     <button>Logout</button> -->
   </div>
   <HomePage/>
+</div>
 </template>
 
 <script>

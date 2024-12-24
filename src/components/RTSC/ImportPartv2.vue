@@ -1,6 +1,33 @@
 <template>
-  <div class="sps">
-
+  <div
+    style="
+      border-radius: 30px;
+      font-weight: bold;
+      position: fixed;
+      height: 50vh;
+      margin: 30vh 5%;
+      width: 90%;
+      z-index: 80;
+      color: white;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.80);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(0, 0, 0, 0.3);
+overflow: hidden;
+    "
+  >
+ 
+  <h1 style="font-size:6rem">Under Construction</h1>
+  <h1 style="font-size:6rem">PJT.Real Time Stock Control</h1>
+  <h1 style="font-size:6rem">Go Live:January 2025</h1>
+  </div>
+  <!-- <h1 style="text-align: center; background-color: black;position: fixed;color: #ffffff;font-size: 6rem;font-weight: bolder ;z-index: 99;width: 90%;margin: 25% 5%">UNDER CONSTRUCTION</h1> -->
+  <div
+    class="sps"
+    style="height: 100vh; overflow: hidden;  filter: blur(5px); "
+  >
 
 
   <div class="andon-container">
@@ -88,7 +115,7 @@
               <h1 className="bG3 fZ1">7</h1>
             </div>
             <div className="col-3 zero border bG1">
-              <h1 className="fZ1">SMC</h1>
+              <h1 className="fZ1">TMV</h1>
               <h1 className="bG3 fZ1">5</h1>
             </div>
           </div>
