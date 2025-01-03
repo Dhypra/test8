@@ -1,5 +1,5 @@
 <template>
-   <div
+   <!-- <div
     style="
       border-radius: 30px;
       font-weight: bold;
@@ -22,11 +22,13 @@ overflow: hidden;
   <h1 style="font-size:4rem">Under Construction</h1>
   <h1 style="font-size:4rem">PJT.Real Time Stock Control</h1>
   <h1 style="font-size:4rem">Go Live:January 2025</h1>
-  </div>
+  </div> -->
   <!-- <h1 style="text-align: center; background-color: black;position: fixed;color: #ffffff;font-size: 6rem;font-weight: bolder ;z-index: 99;width: 90%;margin: 25% 5%">UNDER CONSTRUCTION</h1> -->
   <div
     class="sps"
-    style="height: 100vh; overflow: hidden;  filter: blur(5px); "
+    style="height: 100vh; overflow: hidden;
+      /* filter: blur(5px); */
+       "
   >
 
     <div class="andon-container">
@@ -89,13 +91,13 @@ overflow: hidden;
           <CCard class="col-6 bR">
             <div class="title">P-Lane</div>
             <CCardBody>
-              <CCardText class="fC cardA">10</CCardText>
+              <CCardText class="fC cardA">8</CCardText>
             </CCardBody>
           </CCard>
           <CCard class="col-6">
             <div class="title">Counter</div>
             <CCardBody>
-              <CCardText class="fC cardA">30</CCardText>
+              <CCardText class="fC cardA">11</CCardText>
             </CCardBody>
           </CCard>
         </div>
@@ -116,7 +118,7 @@ overflow: hidden;
             >
               <div class="title fZ1">{{ part.part }}</div>
               <div style="font-size: 2.2rem">{{ part.stockMinute }}Min</div>
-              <div class="fZ1 cPartCard">{{ index + 10 }}</div>
+              <div class="fZ1 cPartCard">{{ part.qty }}</div>
             </div>
           </div>
         </CCardBody>

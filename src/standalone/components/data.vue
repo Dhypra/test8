@@ -7,108 +7,108 @@ export default {
   name: 'data',
   parts: [
     {
-      part: 'D312',
-      qty: 200,
-      stockMinute: 100,
+      part: 'D007',
+      qty: 12,
+      stockMinute: 15,
     },
     {
-      part: 'A424',
-      qty: 100,
+      part: 'D420',
+      qty: 36,
+      stockMinute: 46,
+    },
+    {
+      part: 'S123',
+      qty: 19,
+      stockMinute: 24,
+    },
+    {
+      part: 'S123',
+      qty: 36,
+      stockMinute: 45,
+    },
+    {
+      part: 'T107',
+      qty: 56,
+      stockMinute: 60,
+    },
+    {
+      part: 'T113',
+      qty: 64,
       stockMinute: 50,
     },
     {
-      part: 'A424',
-      qty: 100,
-      stockMinute: 50,
+      part: 'T122',
+      qty: 64,
+      stockMinute: 68,
     },
     {
-      part: 'A424',
-      qty: 100,
-      stockMinute: 50,
+      part: 'T122',
+      qty: 57,
+      stockMinute: 46,
     },
     {
-      part: 'A424',
+      part: 'T124',
       qty: 100,
-      stockMinute: 50,
+      stockMinute: 74,
     },
     {
-      part: 'A424',
-      qty: 100,
-      stockMinute: 50,
+      part: 'T130',
+      qty: 23,
+      stockMinute: 14,
     },
     {
-      part: 'A424',
-      qty: 100,
-      stockMinute: 50,
-    },
-    {
-      part: 'A424',
-      qty: 100,
-      stockMinute: 50,
-    },
-    {
-      part: 'A424',
-      qty: 100,
-      stockMinute: 50,
-    },
-    {
-      part: 'A424',
-      qty: 100,
-      stockMinute: 50,
-    },
-    {
-      part: 'E524',
-      qty: 140,
+      part: 'U400',
+      qty: 15,
       stockMinute: 70,
     },
     {
-      part: 'C122',
-      qty: 1000,
-      stockMinute: 100,
+      part: 'V101',
+      qty: 75,
+      stockMinute: 68,
     },
     {
       part: 'B231',
-      qty: 2000,
-      stockMinute: 100,
+      qty: 75,
+      stockMinute: 75,
     },
     {
-      part: 'B566',
-      qty: 300,
-      stockMinute: 200,
+      part: 'T110',
+      qty: 68,
+      stockMinute: 80,
     },
     {
-      part: 'A789',
-      qty: 150,
+      part: 'S116',
+      qty: 90,
       stockMinute: 80,
     },{
-      part: 'B987',
-      qty: 130,
-      stockMinute: 65},
+      part: 'D534',
+      qty: 35,
+      stockMinute: 35},
       {
-      part: 'D241',
-      qty: 2000,
-      stockMinute: 100
+      part: 'D520',
+      qty: 75,
+      stockMinute: 200
     },
     {
-      part: 'C654',
+      part: 'D510',
       qty: 100,
-      stockMinute: 50
+      stockMinute: 68
     }, {
-      part: 'E678', 
-      qty: 1000,
-      stockMinute: 100
+      part: 'D416', 
+      qty: 86,
+      stockMinute: 35
     },{
-      part: 'C786',
-      qty: 100,
-      stockMinute: 50
+      part: 'D301',
+      qty: 35,
+      stockMinute: 97
     },{
-      part: 'A908',
-      qty: 100,
-      stockMinute: 100
+      part: 'D212',
+      qty: 68,
+      stockMinute: 89
     },{
-      part: 'B567',
-      qty: 100,
-      stockMinute: 100
+      part: 'D190',
+      qty: 25,
+      stockMinute: 79
     }
   ],
 }
