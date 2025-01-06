@@ -54,7 +54,7 @@ export default {
     {
       part: 'T130',
       qty: 23,
-      stockMinute: 14,
+      stockMinute: 15,
     },
     {
       part: 'U400',
