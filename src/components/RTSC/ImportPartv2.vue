@@ -30,7 +30,7 @@ overflow: hidden;
     /* filter: blur(5px); */
      "
  >
-
+ <div class="loader" style=""></div>
    <div class="andon-container">
      <div class="andon-header">
      <CCard style="border-radius: 15px">
@@ -89,8 +89,8 @@ overflow: hidden;
         <div class="title">Next Delivery</div>
         <div class="title row zero border list">
           <div className="col-3 zero bG1 fZ1">IN-03</div>
-          <div className="col-5 zero fZ1 bG2">31-11-2024</div>
-          <div className="col-4 zero fZ1 bG2">03:00 WIB</div>
+          <div className="col-5 zero fZ1 bG2">24-01-2024</div>
+          <div className="col-4 zero fZ1 bG2">14:00 WIB</div>
         </div>
         <div class="title">
           <img
@@ -215,7 +215,6 @@ overflow: hidden;
             </div>
           </div>
 
-         
           <div class="title row p-0 m-0 border list">
             <div
               className="col-2 p-0 m-0 bor bG3 fZ5 c1"
@@ -233,13 +232,129 @@ overflow: hidden;
               className="col-2 p-0 m-0 bor bG3 fZ5 c1"
               
             >
-              11:00
+              09:30
             </div>
             <div
               className="col-2 p-0 m-0 bor bG3 fZ5 c1"
               
             >
-              11:10
+              09:40
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              10Min
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              Waiting
+            </div>
+          </div>
+         
+          <div class="title row p-0 m-0 border list">
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              12
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              05
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              09:40
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              09:45
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              5Min
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              Waiting
+            </div>
+          </div>
+          <div class="title row p-0 m-0 border list">
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              2
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              06
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              09:45
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              10:00
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              15Min
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              Waiting
+            </div>
+          </div>
+         
+          <div class="title row p-0 m-0 border list">
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              05
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              07
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              10:00
+            </div>
+            <div
+              className="col-2 p-0 m-0 bor bG3 fZ5 c1"
+              
+            >
+              10:10
             </div>
             <div
               className="col-2 p-0 m-0 bor bG3 fZ5 c1"
@@ -273,19 +388,19 @@ overflow: hidden;
               className="col-2 p-0 m-0 bor bG3 fZ5 c1"
               
             >
-              09:20
+              10:20
             </div>
             <div
               className="col-2 p-0 m-0 bor bG3 fZ5 c1"
               
             >
-              09:30
+              10:30
             </div>
             <div
               className="col-2 p-0 m-0 bor bG3 fZ5 c1"
               
             >
-              30Min
+              10Min
             </div>
             <div
               className="col-2 p-0 m-0 bor bG3 fZ5 c1"
@@ -304,7 +419,7 @@ overflow: hidden;
           <div
             className="col-8 p-0 m-0 "
           >
-            2/12
+            1/12
           </div>
         </div>
       </CCard>
@@ -396,18 +511,18 @@ export default {
             data: [
               {
                 x: '< 1Shift',
-                y: 30,
+                y: 11,
                 fillColor: '#f00000',
                 strokeColor: '#C23829',
               }, 
               {
-                x: '3 Days',
-                y: 60,
+                x: '1-3 Days',
+                y: 58,
                 fillColor: '#228b22',
                 strokeColor: '#C23829',
               },
               {
-                x: '1 Week',
+                x: '>3 Days',
                 y: 20,
                 fillColor: '#ff6600',
                 strokeColor: '#C23829',
@@ -427,7 +542,7 @@ export default {
         },
       },
       xaxis: {
-          categories: ['< 1Shift', '3 Days', '1 Week'],
+          categories: ['< 1Shift', '1-3 Days', '>3 Days'],
           labels: {
             style: {
               fontSize: '1rem', // Change the font size for x-axis labels

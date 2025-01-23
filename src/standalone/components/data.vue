@@ -7,12 +7,12 @@ export default {
   name: 'data',
   parts: [
     {
-      part: 'D007',
+      part: 'T115',
       qty: 12,
       stockMinute: 15,
     },
     {
-      part: 'D420',
+      part: 'T508',
       qty: 36,
       stockMinute: 46,
     },
@@ -22,7 +22,7 @@ export default {
       stockMinute: 24,
     },
     {
-      part: 'S123',
+      part: 'S124',
       qty: 36,
       stockMinute: 45,
     },
@@ -67,7 +67,7 @@ export default {
       stockMinute: 68,
     },
     {
-      part: 'B231',
+      part: 'T507',
       qty: 75,
       stockMinute: 75,
     },
@@ -81,32 +81,32 @@ export default {
       qty: 90,
       stockMinute: 80,
     },{
-      part: 'D534',
+      part: 'T511',
       qty: 35,
       stockMinute: 35},
       {
-      part: 'D520',
+      part: 'T110',
       qty: 75,
       stockMinute: 200
     },
     {
-      part: 'D510',
+      part: 'S121',
       qty: 100,
       stockMinute: 68
     }, {
-      part: 'D416', 
+      part: 'S003', 
       qty: 86,
       stockMinute: 35
     },{
-      part: 'D301',
+      part: 'S111',
       qty: 35,
       stockMinute: 97
     },{
-      part: 'D212',
+      part: 'S501',
       qty: 68,
       stockMinute: 89
     },{
-      part: 'D190',
+      part: 'S111',
       qty: 25,
       stockMinute: 79
     }

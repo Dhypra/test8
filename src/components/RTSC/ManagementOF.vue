@@ -53,53 +53,52 @@
               <div class="row">
                 <!-- Module Code List -->
                 <div
-                  v-for="(module, index) in moduleCode.sort(
-                    (a, b) => b.parts.length - a.parts.length,
-                  )"
-                  :key="index"
+                  v-for="(module, index) in uniqueModules"
+                  :key="module.M_CODE"
                   class="dropdown-option col-1 text-center"
-                  :class="{ selected: module.module === selectedOption }"
-                  @click="selectOption(module.module)"
+                  :class="{ selected: module.M_CODE === selectedOption }"
+                  @click="selectOption(module.M_CODE)"
                 >
-                  {{ module.module }}
+                  {{ module.M_CODE }}
                   <p style="position: absolute; font-size: 0.6rem">
-                    {{ module.parts.length }}
+                    {{ module.count }}
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Input Fields -->
           <div class="row">
             <div class="col-6">
               <div class="filter-section">
-                <label for="filter-date">Part No</label>
+                <label>Part No</label>
                 <input v-model="partNo" type="text" />
               </div>
-
-              <div class="filter-section" v-if="menuSelected == 'edit'">
+              <div v-if="menuSelected === 'edit'" class="filter-section">
                 <label>Qty Remain</label>
                 <input v-model="qtyRemain" type="number" />
               </div>
             </div>
             <div v-if="partUnique" class="col-6">
               <div class="filter-section">
-                <label for="filter-date">Unique No</label>
+                <label>Unique No</label>
                 <input :value="partUnique" disabled />
               </div>
-
               <div class="filter-section">
                 <label>Part Name</label>
                 <input :value="partName" disabled />
               </div>
             </div>
           </div>
-          <button @click="clear">Clear</button>
-          <button v-if="menuSelected == 'edit'" @click="clear">Submit</button>
+
+          <div class="action-buttons">
+            <button @click="clear">Clear</button>
+            <button v-if="menuSelected === 'edit'" @click="editRemainPart">
+              Submit
+            </button>
+          </div>
         </div>
 
-        <!-- Data Table -->
         <table class="data-table">
           <thead>
             <tr>
@@ -112,21 +111,17 @@
               <th>Shift</th>
             </tr>
           </thead>
-          <template v-for="module in partList" :key="module.module">
-            <tr
-              v-for="(part, index) in module.parts"
-              :key="index"
-              @dblclick="handleDoubleClick(module.module, part.part_no)"
-            >
-              <td>{{ module.module }}</td>
-              <td>{{ part.part_no }}</td>
-              <td>{{ part.part_name }}</td>
-              <td>{{ part.unique_no }}</td>
-              <td>{{ part.qty_remain }}</td>
-              <td>{{ part.qty_kanban }}</td>
-              <td>day</td>
+          <tbody>
+            <tr v-for="(module, index) in uniqueParts" :key="module.M_CODE">
+              <td>{{ module.MODULE_CODE }}</td>
+              <td>{{ module.PART_NUMBER }}</td>
+              <td>{{ module.PART_NAME }}</td>
+              <td>{{ module.UNIQUE_NO }}</td>
+              <td>{{ module.count }}</td>
+              <td>1</td>
+              <td>{{ module.SHIFT }}</td>
             </tr>
-          </template>
+          </tbody>
         </table>
       </div>
     </div>
@@ -134,36 +129,75 @@
 </template>
 
 <script>
-import dataModule from '@/components/RTSC/dataModuleCode.vue'
-import dataMasterPart from '@/views/MasterPart.vue'
+import axios from 'axios'
 
 export default {
   name: 'ManagementOF',
   data() {
     return {
-      moduleCode: dataModule.data, // Data module codes
-      partData: dataMasterPart.masterPart, // Master parts data
-      isDropdownOpen: false, // Dropdown visibility toggle
-      selectedOption: null, // Selected module
-      partNo: '', // Input filter for Part No
-      partUnique: '', // Displayed unique number
-      partName: '', // Displayed part name
-      partList: [], // Filtered list of parts
-      menuSelected: 'in', // Currently selected menu
-      qtyRemain: '', // Quantity remaining for 'edit'
+      moduleCode: [],
+      isDropdownOpen: false,
+      selectedOption: null,
+      partNo: '',
+      partUnique: '',
+      partName: '',
+      partList: [],
+      menuSelected: 'in',
+      qtyRemain: null,
     }
   },
   watch: {
-    // Apply filters when selectedOption or partNo changes
     selectedOption: 'applyFilters',
     partNo: 'applyFilters',
   },
   mounted() {
-    // Initialize partList with all modules
-    this.partList = this.moduleCode
+    this.fetchData()
+  },
+  computed: {
+    // Menghitung modul unik berdasarkan kode modul
+    uniqueModules() {
+      return this.moduleCode.reduce((acc, current) => {
+        const existing = acc.find((item) => item.M_CODE === current.M_CODE)
+        if (existing) {
+          existing.count += 1
+        } else {
+          acc.push({ ...current, count: current.MODULE_CODE === null ? 0 : 1 })
+        }
+        return acc
+      }, [])
+    },
+    // Menghitung part unik berdasarkan kombinasi kode modul dan nomor part
+    uniqueParts() {
+      return this.partList.reduce((acc, current) => {
+        const existing = acc.find(
+          (item) =>
+            item.MODULE_CODE === current.MODULE_CODE &&
+            item.PART_NUMBER === current.PART_NUMBER,
+        )
+        if (existing) {
+          existing.count += 1
+        } else {
+          acc.push({ ...current, count: 1 })
+        }
+        return acc
+      }, [])
+    },
   },
   methods: {
-    // Clear all inputs and reset data
+    // Fetch data dari API
+    fetchData() {
+      axios.get('http://localhost:3000/getMasterPart').then((response) => {
+        this.masterPart = response.data.masterPart
+      })
+      axios.get('http://localhost:3000/getMasterModule').then((response) => {
+        this.masterModule = response.data.masterModule
+        this.moduleCode = response.data.masterModule
+      })
+      axios.get('http://localhost:3000/getContainModule').then((response) => {
+        this.partList = response.data.containModule
+      })
+    },
+    // Menghapus filter dan reset data
     clear() {
       this.isDropdownOpen = false
       this.selectedOption = null
@@ -172,77 +206,166 @@ export default {
       this.partName = ''
       this.partList = []
     },
-
-    // Toggle dropdown visibility
-    toggleDropdown() {
-      this.isDropdownOpen = !this.isDropdownOpen
-    },
-
-    // Select a module option
+    // Memilih opsi modul
     selectOption(option) {
       this.selectedOption = this.selectedOption === option ? null : option
-      this.isDropdownOpen = false // Close dropdown
+      this.isDropdownOpen = false
     },
-
-    // Select a menu ('in', 'out', 'edit')
+    // Mengatur menu yang dipilih
     selectMenu(menu) {
       this.clear()
       this.menuSelected = menu
-      console.log(this.menuSelected)
     },
+    editRemainPart() {
+      const soundSuccess = new Audio(require('@/assets/audio/success.wav'))
+      const soundFailed = new Audio(require('@/assets/audio/fail.wav'))
 
-    // Apply filters based on selectedOption and partNo
-    applyFilters() {
-      console.log(this.partNo)
-      let filteredList = this.moduleCode
-
-      if (this.selectedOption) {
-        filteredList = filteredList.filter(
-          (module) => module.module === this.selectedOption,
-        )
-      }
-
-      if (this.partNo) {
-        filteredList = filteredList
-          .map((module) => ({
-            ...module,
-            parts: module.parts.filter(
-              (part) => part.part_no && part.part_no == this.partNo,
-            ),
-          }))
-          .filter((module) => module.parts.length > 0) // Remove empty modules
-      }
-
-      this.partList = filteredList
-
-      const matchingPart = this.partData.find(
-        (part) => part.PART_NO == this.partNo,
-      )
-
-      const sound = new Audio(require('@/assets/audio/success.mp3'))
-
-      const foundPart = this.partData.find((part) =>
+      const filteredPart = this.masterPart.find((part) =>
         this.partNo.includes(part.PART_NO),
       )
-      console.log(foundPart)
+      console.log(this.selectedOption)
 
       if (
-        foundPart &&
-        (this.menuSelected === 'in' || this.menuSelected === 'out')
+        filteredPart &&
+        this.qtyRemain !== null &&
+        this.selectedOption !== null
       ) {
-        sound.play() // Play sound on match
-        this.partNo = '' // Clear input
-      }
+        axios
+          .post('http://localhost:3000/setRemainPart', {
+            moduleCode: this.selectedOption,
+            partNo: filteredPart.PART_NO,
+            countPart: this.qtyRemain,
+          })
+          .then(() => {
+            soundSuccess.play()
 
-      this.partUnique = matchingPart ? matchingPart.UNIQUE_NO : ''
-      this.partName = matchingPart ? matchingPart.PART_NAME : ''
+            axios
+              .get('http://localhost:3000/getMasterModule')
+              .then((response) => {
+                this.masterModule = response.data.masterModule
+                this.moduleCode = response.data.masterModule
+              })
+            this.partNo = ''
+            this.partUnique = ''
+            this.partName = ''
+            this.qtyRemain = null
+          })
+      }
+    },
+    // Mengaplikasikan filter berdasarkan input
+    applyFilters() {
+      const soundSuccess = new Audio(require('@/assets/audio/success.wav'))
+      const soundFailed = new Audio(require('@/assets/audio/fail.wav'))
+
+console.log(this.partNo)
+
+      if (this.selectedOption) {
+        axios
+          .get(
+            `http://localhost:3000/getContainModule/module/${this.selectedOption}`,
+          )
+          .then((response) => {
+            this.partList = response.data.containModule
+          })
+      } else {
+        axios.get('http://localhost:3000/getContainModule').then((response) => {
+          this.partList = response.data.containModule
+        })
+      }
+      if (this.partNo) {
+        axios
+          .get(`http://localhost:3000/getContainModule/part/${this.partNo.replaceAll("/", "")}`)
+          .then((response) => {
+            this.partList = response.data.containModule
+          })
+
+        if (this.partNo && this.selectedOption) {
+          axios
+            .get(
+              `http://localhost:3000/getContainModule/modulePart/${this.selectedOption}/${this.partNo.replaceAll("/", "")}`,
+            )
+            .then((response) => {
+              this.partList = response.data.containModule
+              console.log(response.data.containModule)
+            })
+        }
+        const filteredPart = this.masterPart.find((part) =>
+          this.partNo.includes(part.PART_NO),
+        )
+
+        const filteredModule = this.masterModule.find(
+          (part) =>
+            this.partNo.includes(part.PART_NUMBER) &&
+            this.selectedOption === part.MODULE_CODE,
+        )
+
+        if (
+          this.selectedOption &&
+          filteredPart &&
+          this.menuSelected === 'out'
+        ) {
+          if (filteredModule) {
+            axios
+              .post('http://localhost:3000/deleteData', {
+                moduleCode: this.selectedOption,
+                partNo: filteredPart.PART_NO,
+              })
+              .then(() => {
+                soundSuccess.play()
+                this.partNo = ''
+                axios
+                  .get('http://localhost:3000/getMasterModule')
+                  .then((response) => {
+                    this.masterModule = response.data.masterModule
+                    this.moduleCode = response.data.masterModule
+                  })
+              })
+          } else {
+            soundFailed.play()
+            this.partNo = ''
+            alert(
+              `Part ${filteredPart.PART_NAME}(${filteredPart.PART_NO}) not found in module`,
+            )
+          }
+        } else if (
+          this.selectedOption &&
+          filteredPart &&
+          this.menuSelected === 'in'
+        ) {
+          axios
+            .post('http://localhost:3000/addData', {
+              moduleCode: this.selectedOption,
+              partNo: filteredPart.PART_NO,
+            })
+            .then(() => {
+              soundSuccess.play()
+              this.partNo = ''
+              axios
+                .get('http://localhost:3000/getMasterModule')
+                .then((response) => {
+                  this.masterModule = response.data.masterModule
+                  this.moduleCode = response.data.masterModule
+                })
+            })
+        } else if (this.menuSelected === 'edit') {
+          if (filteredPart) {
+            this.partNo = filteredPart.PART_NO
+            this.partUnique = filteredPart.UNIQUE_NO
+            this.partName = filteredPart.PART_NAME
+          }
+        }
+      }
     },
 
-    // Handle double-click on table rows
+    // Menangani klik ganda untuk memilih modul dan nomor part
     handleDoubleClick(moduleCode, partNo) {
       this.selectedOption = moduleCode
       this.partNo = partNo
       this.applyFilters()
+    },
+    // Submit data pada menu edit
+    submit() {
+      console.log('Submit action for edit menu')
     },
   },
 }
