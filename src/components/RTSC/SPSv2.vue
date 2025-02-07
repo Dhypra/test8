@@ -37,7 +37,7 @@ overflow: hidden;
         margin: 25% 5%;
       "
     >
-      UNDER CONSTRUCTION
+      ON PROGRESS
     </h1>
     <div class="andon-container">
       <div class="andon-header">
