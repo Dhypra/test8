@@ -23,13 +23,22 @@ overflow: hidden;
  <h1 style="font-size:4rem">PJT.Real Time Stock Control</h1>
  <h1 style="font-size:4rem">Go Live:January 2025</h1>
  </div> -->
- <!-- <h1 style="text-align: center; background-color: black;position: fixed;color: #ffffff;font-size: 6rem;font-weight: bolder ;z-index: 99;width: 90%;margin: 25% 5%">UNDER CONSTRUCTION</h1> -->
- <div
-   class="sps"
-   style="height: 100vh; overflow: hidden; 
-    /* filter: blur(5px); */
-     "
- >
+ <div class="sps" style="height: 100vh; overflow: hidden; filter: blur(2px)">
+    <h1
+      style="
+        text-align: center;
+        background-color: black;
+        position: fixed;
+        color: #ffffff;
+        font-size: 6rem;
+        font-weight: bolder;
+        z-index: 99;
+        width: 90%;
+        margin: 25% 5%;
+      "
+    >
+      ON PROGRESS
+    </h1>
  <div class="loader" style=""></div>
    <div class="andon-container">
      <div class="andon-header">
