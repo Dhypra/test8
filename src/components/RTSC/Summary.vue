@@ -260,7 +260,7 @@
             <tbody>
               <tr
                 v-for="(modulePart, index) in modalModule"
-                :class="[modulePart.qty_remain !==0  ? '' : 'bg-secondary']"
+                :class="[modulePart.qty_remain !== 0 ? '' : 'bg-secondary']"
               >
                 <td>{{ index + 1 }}</td>
                 <td>{{ moduleModal[0].module_no }}</td>
@@ -323,8 +323,8 @@
       :visible="modalAddPart"
       @close="
         () => {
-          modalAddPart = false;
-          this.selectedPartFilter= null;
+          modalAddPart = false
+          this.selectedPartFilter = null
         }
       "
       ><CModalHeader
@@ -381,15 +381,16 @@
               type="number"
             />
           </div>
-          
         </div>
         <button
           type="button"
           class="btn btn-info"
-          @click="() => {
-          modalAddPart = false;
-          this.selectedPartFilter= null;
-        }"
+          @click="
+            () => {
+              modalAddPart = false
+              this.selectedPartFilter = null
+            }
+          "
         >
           Save
         </button>
@@ -455,7 +456,6 @@
                 <th>Qty Kanban</th>
                 <th>Qty Remain</th>
                 <th>Date Tapping</th>
-
               </tr>
             </thead>
             <tbody>
@@ -483,7 +483,6 @@
                     new Date(part.date_tapping).toLocaleDateString('id-ID')
                   }}</span>
                 </td>
-
               </tr>
             </tbody>
           </table>

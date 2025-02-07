@@ -63,9 +63,8 @@ export default {
 <style>
 .bg {
   background: rgba(255, 255, 255, 0.25);
-border-radius: 5px;
-overflow: hidden;
- 
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .head-module button.active {

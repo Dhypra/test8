@@ -1,12 +1,10 @@
 <template>
+  <CCard class="cCard">
+    <div class="title">Critical Part</div>
 
-      <CCard class="cCard">
-        <div class="title">Critical Part</div>
-  
-        <CCardBody class="container text-center"> Critical part </CCardBody>
-      </CCard>
-
-  </template>
+    <CCardBody class="container text-center"> Critical part </CCardBody>
+  </CCard>
+</template>
 
 <script>
 import { CCard, CCardHeader, CCardBody, CCardText } from '@coreui/vue'

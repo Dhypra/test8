@@ -16,7 +16,6 @@
     </CCard>
 
     <!--data Uploaded -->
-    
   </div>
 </template>
 

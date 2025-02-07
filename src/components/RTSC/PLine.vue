@@ -1,5 +1,5 @@
 <template>
-    <div
+  <div
     style="
       border-radius: 30px;
       font-weight: bold;
@@ -10,33 +10,37 @@
       z-index: 80;
       color: white;
       text-align: center;
-      background: rgba(0, 0, 0, 0.80);
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(0, 0, 0, 0.3);
-overflow: hidden;
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      overflow: hidden;
     "
   >
- 
-  <h1 style="font-size:6rem">Under Construction</h1>
-  <h1 style="font-size:6rem">PJT.Real Time Stock Control</h1>
-  <h1 style="font-size:6rem">Go Live:January 2025</h1>
+    <h1 style="font-size: 6rem">Under Construction</h1>
+    <h1 style="font-size: 6rem">PJT.Real Time Stock Control</h1>
+    <h1 style="font-size: 6rem">Go Live:January 2025</h1>
   </div>
   <!-- <h1 style="text-align: center; background-color: black;position: fixed;color: #ffffff;font-size: 6rem;font-weight: bolder ;z-index: 99;width: 90%;margin: 25% 5%">UNDER CONSTRUCTION</h1> -->
-  <div
-    class="sps"
-    style="height: 100vh; overflow: hidden; filter: blur(5px); "
-  >
+  <div class="sps" style="height: 100vh; overflow: hidden; filter: blur(5px)">
     <RTSCHead :area="area" class="m-2" />
 
     <div class="row justify-content-between" style="width: 100%; margin: 0">
-      <RTSCStockChart :pLane="pLane" :counter="counter" class="col-lg-7 col-12 m-2" style="width: 70%" />
-      <RTSCNextDelivery 
-     :curTruck="curTruck"
-     :curTime="curTime"
-     :planTruck="planTruck"
-     :planTime="planTime" class="col-lg-4 col-12 m-2" style="width: 27.5%" />
+      <RTSCStockChart
+        :pLane="pLane"
+        :counter="counter"
+        class="col-lg-7 col-12 m-2"
+        style="width: 70%"
+      />
+      <RTSCNextDelivery
+        :curTruck="curTruck"
+        :curTime="curTime"
+        :planTruck="planTruck"
+        :planTime="planTime"
+        class="col-lg-4 col-12 m-2"
+        style="width: 27.5%"
+      />
       <RTSCCriticalPart class="col-lg-6 col-12 m-2" style="width: 55%" />
       <RTSCOutPLane
         :pLane="pLane"
@@ -127,7 +131,7 @@ export default {
       this.isFullScreen = !document.fullscreenElement
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('fullscreenchange', this.checkFullScreen)
   },
 }

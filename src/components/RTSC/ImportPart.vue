@@ -125,7 +125,7 @@ export default {
       this.isFullScreen = !document.fullscreenElement
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('fullscreenchange', this.checkFullScreen)
   },
 }

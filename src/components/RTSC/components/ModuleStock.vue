@@ -165,7 +165,7 @@
 export default {
   name: 'ModuleStock',
   data() {
-    color: 'blue'
+    'blue'
   },
   props: {
     moduleTMC: Number,

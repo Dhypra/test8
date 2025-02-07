@@ -1,8 +1,15 @@
 <template>
   <!-- judul -->
-  <CCard style="width: 99%; text-align: left; margin: 0 0 10px 0;border-radius: 15px">
+  <CCard
+    style="
+      width: 99%;
+      text-align: left;
+      margin: 0 0 10px 0;
+      border-radius: 15px;
+    "
+  >
     <CListGroup
-      style="background-color: #4cadab; color: white;border-radius: 15px"
+      style="background-color: #4cadab; color: white; border-radius: 15px"
       class="text-center"
     >
       <div
@@ -79,7 +86,7 @@ export default {
       const year = date.getFullYear()
       const now = `${days[day]},${hari}-${month}-${year}`
       this.today = now
-      this.shift = hour>=5||hour<=17 ? 'Day' : 'Night'
+      this.shift = hour >= 5 || hour <= 17 ? 'Day' : 'Night'
     },
 
     getCurrentTime() {

@@ -1,28 +1,27 @@
 <template>
   <CCard class="cCard cCardH">
-    <div class="title">Next Fill In </div>
+    <div class="title">Next Fill In</div>
     <CCardBody className="d-flex flex-row bT">
-      <CCard  className="col-6 bR">
-        <div class="title">P-Lane </div>
-        <CCardBody  >
+      <CCard className="col-6 bR">
+        <div class="title">P-Lane</div>
+        <CCardBody>
           <CCardText className="fC cardA">
             {{ pLane }}
           </CCardText>
         </CCardBody>
       </CCard>
-      <CCard  className="col-6">
-        <div class="title">Counter </div>
-        <CCardBody >
+      <CCard className="col-6">
+        <div class="title">Counter</div>
+        <CCardBody>
           <CCardText className="fC cardA">
             {{ counter }}
           </CCardText>
         </CCardBody>
       </CCard>
     </CCardBody>
-    <CCardFooter class="title footer ">30 Min left </CCardFooter>
+    <CCardFooter class="title footer">30 Min left </CCardFooter>
   </CCard>
 </template>
- 
 
 <script>
 import { CCard, CCardHeader, CCardBody, CCardText } from '@coreui/vue'
@@ -31,7 +30,7 @@ import '@/components/RTSC/components/rtsc.css'
 
 export default {
   name: 'counterPline',
-  component: { data , CCard, CCardHeader, CCardBody, CCardText },
+  component: { data, CCard, CCardHeader, CCardBody, CCardText },
   props: {
     pLane: '',
     counter: '',
@@ -69,7 +68,7 @@ export default {
   mounted() {
     this.startCountdown()
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearInterval(this.timer) // Clear the timer when the component is destroyed
   },
 }

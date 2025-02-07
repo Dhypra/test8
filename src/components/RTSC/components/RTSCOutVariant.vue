@@ -9,13 +9,15 @@
       </CCard>
       <CCard class="cCard" className="col-6 bT">
         <div class="title">Next Variant</div>
-        <CCardBody className="zero bZ"  v-for="(part, index) in criticalPart"
-        :key="index">
+        <CCardBody
+          className="zero bZ"
+          v-for="(part, index) in criticalPart"
+          :key="index"
+        >
           <div class="title row zero border list">
             <div className="col-2 zero  cPartCard ">{{ index + 1 }}</div>
             <div className="col-10 zero ">{{ part.part }}</div>
           </div>
-          
         </CCardBody>
       </CCard>
     </CCardBody>

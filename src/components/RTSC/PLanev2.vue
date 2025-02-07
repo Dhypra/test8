@@ -1,5 +1,5 @@
 <template>
-   <!-- <div
+  <!-- <div
     style="
       border-radius: 30px;
       font-weight: bold;
@@ -26,9 +26,7 @@ overflow: hidden;
   <!-- <h1 style="text-align: center; background-color: black;position: fixed;color: #ffffff;font-size: 6rem;font-weight: bolder ;z-index: 99;width: 90%;margin: 25% 5%">UNDER CONSTRUCTION</h1> -->
   <div
     class="sps"
-    style="height: 100vh; overflow: hidden; 
-     /* filter: blur(5px);  */
-     "
+    style="height: 100vh; overflow: hidden; /* filter: blur(5px);  */"
   >
     <div class="andon-container">
       <div class="andon-header">
@@ -390,7 +388,7 @@ export default {
       this.currentTime = `${hours}:${minutes}:${seconds}`
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('fullscreenchange', this.checkFullScreen)
   },
   beforeUnmount() {
@@ -414,7 +412,6 @@ export default {
   text-align: center;
   font-weight: bold;
   padding: 5px 10px;
-
 }
 
 .content-container {

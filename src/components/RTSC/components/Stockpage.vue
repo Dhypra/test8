@@ -1,11 +1,7 @@
 <template>
-    <div>
-        new component
-    </div>
+  <div>new component</div>
 </template>
 
 <script>
-export default {
-   
-}
+export default {}
 </script>

@@ -126,11 +126,11 @@
       <tbody v-for="(module, index) in module" :key="index">
         <tr>
           <td>{{ index + 1 }}</td>
-          <td>{{module.module_type}}</td>
+          <td>{{ module.module_type }}</td>
           <td>{{ module.exporter_name }}</td>
           <td>{{ module.module_no }}</td>
-          <td>{{module.module_note}}</td>
-          <td>{{ module.date_receive}}</td>
+          <td>{{ module.module_note }}</td>
+          <td>{{ module.date_receive }}</td>
           <td>
             <button
               type="button"
@@ -148,7 +148,6 @@
             </button>
           </td>
         </tr>
-       
       </tbody>
     </table>
 

@@ -18,21 +18,21 @@
       alt="img"
       class="user-pic"
       @click="toggleMenu"
-      />
-      <div class="sub-menu-wrap" id="subMenu">
-        <div class="sub-menu">
-          <div class="uer-info">
-            <img
+    />
+    <div class="sub-menu-wrap" id="subMenu">
+      <div class="sub-menu">
+        <div class="uer-info">
+          <img
             style="height: 50px"
             src="@/assets/icons/circle-1.png"
             alt="img"
-            />
-            <h1>{{ userName }}</h1>
-            
-            <hr />
-            
-            <h1>Info User</h1>
-            <h1 @click="logout">logout</h1>
+          />
+          <h1>{{ userName }}</h1>
+
+          <hr />
+
+          <h1>Info User</h1>
+          <h1 @click="logout">logout</h1>
         </div>
       </div>
     </div>
@@ -153,11 +153,8 @@ nav ul li {
   margin: 0px;
 }
 
-
-
 .uer-info h1:hover {
   color: white;
-  
 }
 
 .uer-info img {
@@ -165,5 +162,4 @@ nav ul li {
   border-radius: 50%;
   margin-right: 15px;
 }
-
 </style>

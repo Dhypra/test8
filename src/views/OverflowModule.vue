@@ -162,14 +162,13 @@
       </tbody>
     </table>
 
-
     <CPagination align="center" aria-label="Page navigation example">
-        <CPaginationItem disabled>Previous</CPaginationItem>
-        <CPaginationItem href="#">1</CPaginationItem>
-        <CPaginationItem href="#">2</CPaginationItem>
-        <CPaginationItem href="#">3</CPaginationItem>
-        <CPaginationItem href="#">Next</CPaginationItem>
-      </CPagination>
+      <CPaginationItem disabled>Previous</CPaginationItem>
+      <CPaginationItem href="#">1</CPaginationItem>
+      <CPaginationItem href="#">2</CPaginationItem>
+      <CPaginationItem href="#">3</CPaginationItem>
+      <CPaginationItem href="#">Next</CPaginationItem>
+    </CPagination>
 
     <CModal
       size="xl"

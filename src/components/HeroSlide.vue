@@ -44,13 +44,16 @@
                 {{ slide.desc }}
               </div>
             </div>
-            <div class="flip-card-back text-center conteiner row" :class="{ 'hide': focusedIndex !== index }">
+            <div
+              class="flip-card-back text-center conteiner row"
+              :class="{ hide: focusedIndex !== index }"
+            >
               <div
                 class="col-6 subCrd"
                 v-for="(menu, index) in slide.menus"
                 :key="index"
               >
-                <a href={{ menu.link }}>{{ menu.subMenu }}</a>
+                <a href="{{" menu.link }}>{{ menu.subMenu }}</a>
               </div>
             </div>
           </div>
@@ -61,26 +64,26 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/swiper-bundle.css";
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
-import SwiperCore from "swiper/core";
-SwiperCore.use([EffectCoverflow, Pagination]);
-import "@/views/index.css";
-import "swiper/css";
-import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/swiper-bundle.css'
+import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules'
+import SwiperCore from 'swiper/core'
+SwiperCore.use([EffectCoverflow, Pagination])
+import '@/views/index.css'
+import 'swiper/css'
+import 'swiper/css/navigation'
 
-import kpi from "@/assets/icons/img_1.png";
-import process from "@/assets/icons/process.png";
-import kaizen from "@/assets/icons/kaizen.png";
-import project from "@/assets/icons/project.png";
-import hr from "@/assets/icons/hr.png";
-import system from "@/assets/icons/system.png";
-import pillar from "@/assets/icons/pillar.png";
-import tools from "@/assets/icons/tools.png";
+import kpi from '@/assets/icons/img_1.png'
+import process from '@/assets/icons/process.png'
+import kaizen from '@/assets/icons/kaizen.png'
+import project from '@/assets/icons/project.png'
+import hr from '@/assets/icons/hr.png'
+import system from '@/assets/icons/system.png'
+import pillar from '@/assets/icons/pillar.png'
+import tools from '@/assets/icons/tools.png'
 
 export default {
-  name: "HeroSlide",
+  name: 'HeroSlide',
   components: {
     Swiper,
     SwiperSlide,
@@ -101,131 +104,131 @@ export default {
   setup() {
     return {
       modules: [Pagination, Navigation],
-    };
+    }
   },
   data() {
     return {
       focusedIndex: 0,
       isFlipped: false,
       flippedIndex: null,
-      frontContent: "Front Side Content",
-      backContent: "Back Side Content",
+      frontContent: 'Front Side Content',
+      backContent: 'Back Side Content',
       slides: [
         {
           image: kpi,
-          desc: "KPI",
+          desc: 'KPI',
           menus: [
             {
-              subMenu: "Production Effeciency",
-              link: "#/kpi/productionEffeciency",
+              subMenu: 'Production Effeciency',
+              link: '#/kpi/productionEffeciency',
             },
-            { subMenu: "RFID Perfomance", link: "#/kpi/rfidPerfomance" },
-            { subMenu: "Receiving Summary", link: "#/kpi/receivingSummary" },
-            { subMenu: "SPS Summary", link: "#/kpi/spsSummary" },
+            { subMenu: 'RFID Perfomance', link: '#/kpi/rfidPerfomance' },
+            { subMenu: 'Receiving Summary', link: '#/kpi/receivingSummary' },
+            { subMenu: 'SPS Summary', link: '#/kpi/spsSummary' },
           ],
         },
         {
           image: process,
-          desc: "PROCESS",
+          desc: 'PROCESS',
           menus: [
-            { subMenu: "Receiving Area", link: "#/process/layoutReceiving" },
-            { subMenu: "SPS Area", link: "#/process/layoutSps" },
+            { subMenu: 'Receiving Area', link: '#/process/layoutReceiving' },
+            { subMenu: 'SPS Area', link: '#/process/layoutSps' },
           ],
         },
         {
           image: kaizen,
-          desc: "KAIZEN",
+          desc: 'KAIZEN',
           menus: [
-            { subMenu: "Major Improvement", link: "#/kaizen/majorImprovement" },
+            { subMenu: 'Major Improvement', link: '#/kaizen/majorImprovement' },
             {
-              subMenu: "Minor Improvement",
-              link: "#/process/minorImprovement",
+              subMenu: 'Minor Improvement',
+              link: '#/process/minorImprovement',
             },
           ],
         },
         {
           image: project,
-          desc: "PROJECT",
-          menus: [{ subMenu: "CAPEX", link: "#/project/capex" }],
+          desc: 'PROJECT',
+          menus: [{ subMenu: 'CAPEX', link: '#/project/capex' }],
         },
         {
           image: hr,
-          desc: "HR-DEV",
+          desc: 'HR-DEV',
           menus: [
-            { subMenu: "People Dev", link: "#/hr/peopleDev" },
-            { subMenu: "QCC & SS", link: "#/hr/qccSs" },
+            { subMenu: 'People Dev', link: '#/hr/peopleDev' },
+            { subMenu: 'QCC & SS', link: '#/hr/qccSs' },
           ],
         },
         {
           image: system,
-          desc: "SYSTEM",
+          desc: 'SYSTEM',
           menus: [
             {
-              subMenu: "Real-Time Stock Monitoring",
+              subMenu: 'Real-Time Stock Monitoring',
               link: '/system/rtsm',
             },
-            { subMenu: "AMR", link: "#/system/amr" },
-            { subMenu: "RCS RFID", link: "/app/dashboard" },
+            { subMenu: 'AMR', link: '#/system/amr' },
+            { subMenu: 'RCS RFID', link: '/app/dashboard' },
           ],
         },
         {
           image: pillar,
-          desc: "3 PILLAR",
+          desc: '3 PILLAR',
           menus: [
-            { subMenu: "Safety & 4S", link: "#/pillar/safety4s" },
+            { subMenu: 'Safety & 4S', link: '#/pillar/safety4s' },
             {
-              subMenu: "Logistics Management",
-              link: "#/pillar/logisticsManagement",
+              subMenu: 'Logistics Management',
+              link: '#/pillar/logisticsManagement',
             },
             {
-              subMenu: "Standarization Work",
-              link: "#/pillar/standarizationWork",
+              subMenu: 'Standarization Work',
+              link: '#/pillar/standarizationWork',
             },
             {
-              subMenu: "Ownership Maintenance",
-              link: "#/pillar/ownershipMaintenance",
+              subMenu: 'Ownership Maintenance',
+              link: '#/pillar/ownershipMaintenance',
             },
           ],
         },
         {
           image: tools,
-          desc: "TOOLS",
+          desc: 'TOOLS',
           menus: [
-            { subMenu: "Meeting Board", link: "#/tools/meetingBoard" },
-            { subMenu: "Calculator", link: "#/tools/calculator" },
-            { subMenu: "Memo", link: "#/tools/memo" },
+            { subMenu: 'Meeting Board', link: '#/tools/meetingBoard' },
+            { subMenu: 'Calculator', link: '#/tools/calculator' },
+            { subMenu: 'Memo', link: '#/tools/memo' },
           ],
         },
         // Repeat for additional slides as needed
       ],
 
       paginationOptions: {
-        el: ".swiper-pagination",
+        el: '.swiper-pagination',
         clickable: true,
       },
       navigationOptions: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
         clickable: true,
       },
-    };
+    }
   },
   methods: {
     toggleFlip(index) {
       // If the clicked card is already flipped, flip it back; otherwise, flip the new one
-      console.log(index);
+      console.log(index)
 
-      this.flippedIndex = this.flippedIndex === index ? null : index;
+      this.flippedIndex = this.flippedIndex === index ? null : index
     },
-   
+
     resetFlip(swiper) {
       // Update focusedIndex to the current active index
-      this.flippedIndex = null;
-      this.focusedIndex = swiper.realIndex;
+      this.flippedIndex = null
+      this.focusedIndex = swiper.realIndex
       console.log(this.focusedIndex)
     },
   },
-};
+}
 </script>
 
 <style scoped>

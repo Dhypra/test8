@@ -1,5 +1,5 @@
 <template>
-<h1 style="text-align: center;font-size: 5rem;">Welcome to RTSC</h1>
+  <h1 style="text-align: center; font-size: 5rem">Welcome to RTSC</h1>
 </template>
 
 <script>
@@ -7,23 +7,25 @@ import MainChartExample from './charts/MainChartExample'
 import WidgetsStatsA from './widgets/WidgetsStatsTypeA.vue'
 import WidgetsStatsD from './widgets/WidgetsStatsTypeD.vue'
 import Content from '@/components/Content.vue'
-import data from '@/standalone/components/data.vue';
+import data from '@/standalone/components/data.vue'
 
 export default {
-
   name: 'Dashboard',
   components: {
-  Content,data
-  },data() {
+    Content,
+    data,
+  },
+  data() {
     return {
       isFullScreen: false,
-     heightValue: '80vh', 
+      heightValue: '80vh',
       tasks: data.parts
         .filter((part) => part.stockMinute < 100)
         .map((part) => part)
         .sort((a, b) => a.stockMinute - b.stockMinute),
     }
-  },  mounted() {
+  },
+  mounted() {
     // Update the date every minute
 
     // Event listener to track fullscreen changes
@@ -54,9 +56,7 @@ export default {
       { title: 'Twitter', icon: 'cib-twitter', percent: 11, value: '37,564' },
       { title: 'LinkedIn', icon: 'cib-linkedin', percent: 8, value: '27,319' },
     ]
-    const tableExample = [
-      
-    ]
+    const tableExample = []
 
     return {
       tableExample,
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     toggleFullScreen() {
-      const doc = document.documentElement;
+      const doc = document.documentElement
       if (!document.fullscreenElement) {
         doc.requestFullscreen().catch((err) => {
           alert(
@@ -75,8 +75,8 @@ export default {
           )
         })
       } else {
-        const currentHeight = parseInt(this.heightValue);
-        this.heightValue = `100vh`;
+        const currentHeight = parseInt(this.heightValue)
+        this.heightValue = `100vh`
       }
     },
 
@@ -84,9 +84,8 @@ export default {
       this.isFullScreen = !document.fullscreenElement
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('fullscreenchange', this.checkFullScreen)
   },
-  }
-
+}
 </script>

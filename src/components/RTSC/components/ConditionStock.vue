@@ -20,9 +20,7 @@
           color: black;
         "
       >
-        <CCardText  style="padding: 20px 0;"
-          >{{ condStock }}Hours</CCardText
-        >
+        <CCardText style="padding: 20px 0">{{ condStock }}Hours</CCardText>
       </CCardBody>
 
       <CListGroup

@@ -2,7 +2,7 @@
   <div class="text-center">
     <CCard style="width: 100%">
       <div class="d-flex flex-row">
-        <div style=" width: 100%">
+        <div style="width: 100%">
           <CListGroup
             style="
               font-size: 2rem;
@@ -64,7 +64,6 @@
               </div>
             </div>
           </CCardBody>
-
         </div>
       </div>
       <CListGroup
@@ -125,7 +124,7 @@ export default {
   mounted() {
     this.startCountdown()
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearInterval(this.timer) // Clear the timer when the component is destroyed
   },
 }

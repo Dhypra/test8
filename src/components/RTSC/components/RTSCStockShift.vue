@@ -12,9 +12,7 @@
         >
           <div class="title fZ1">{{ part.part }}</div>
           <div class="fZ2">{{ part.stockMinute }}Min</div>
-          <div
-            class="fZ1 cPartCard"
-          >
+          <div class="fZ1 cPartCard">
             {{ index + 10 }}
           </div>
         </div>

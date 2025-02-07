@@ -38,7 +38,9 @@ export default {
         .sort((a, b) => a.stockMinute - b.stockMinute)
         .slice(0, 10),
       underTwenty: data.parts.filter((part) => part.stockMinute < 20),
-      underAHour: data.parts.filter((part) => part.stockMinute > 20&&part.stockMinute<60),
+      underAHour: data.parts.filter(
+        (part) => part.stockMinute > 20 && part.stockMinute < 60,
+      ),
       aboveAHour: data.parts.filter((part) => part.stockMinute > 60),
     }
   },

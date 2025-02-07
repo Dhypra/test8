@@ -7,28 +7,22 @@ import Home from '@/views/HeroPage.vue'
 import Login from '@/views/LoginPage.vue'
 /*define const other in here*/
 const getUserIdFromLocalStorage = () => {
-  return localStorage.getItem('userId');
-};
+  return localStorage.getItem('userId')
+}
 
 console.log(process.env.VUE_APP_STANDALONE_SINGLE_SPA)
 const routes = [
-
-
   {
     path: '/',
     name: 'login',
     component: Login,
-    
-    
   },
-  
+
   {
     path: '/home/:id',
     name: 'home',
     component: Home,
-    
-  }
-  
+  },
 
   // !Login
   // {
@@ -38,9 +32,6 @@ const routes = [
   //   meta: { layout: 'displayRTSC' },
   // },
 
-  
-
-,
   // !HTTP Status
   {
     path: '/404',
@@ -52,30 +43,23 @@ const routes = [
     name: 'Page500',
     component: () => import('@/views/pages/Page500'),
   },
-  
 
-
-
-  
-  
   // {
   //   // cara ke-1
   //   path: '/rtsc',
   //   name: 'dashboard',
-  
-  
+
   //         component: () => import('@/views/Dashboard.vue'),
   //         meta: { layout: 'displayRTSC' },
   // },
 
-  
   //!Real Time Stock Management
   {
     path: '/system/rtsc',
     name: 'Home',
     component:
-    process.env.VUE_APP_STANDALONE_SINGLE_SPA === 'true'
-    ? DefaultLayoutStandAlone
+      process.env.VUE_APP_STANDALONE_SINGLE_SPA === 'true'
+        ? DefaultLayoutStandAlone
         : DefaultLayout,
     redirect:
       process.env.VUE_APP_STANDALONE_SINGLE_SPA !== 'true' &&
@@ -149,8 +133,6 @@ const routes = [
     component: () => import('@/views/Dashboard.vue'),
     meta: { layout: 'displayRTSC' },
   },
-
-
 ]
 
 const router = createRouter({

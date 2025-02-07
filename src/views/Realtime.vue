@@ -28,7 +28,6 @@ import WidgetsStatsTypeD from '@/views/widgets/WidgetsStatsTypeD.vue'
 // import StandAloneStyle from '@/components/StandAloneStyle.vue'
 // import TreeItem from '@/components/TreeItem.vue'
 
-
 export default {
   name: 'realtime',
   components: {

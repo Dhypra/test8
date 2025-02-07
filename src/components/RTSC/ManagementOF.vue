@@ -4,30 +4,35 @@
       <!-- Header Section -->
       <div
         class="head-module text-center"
-        style="font-size: 1.5rem; color: white; background-color: navy"
+        style="
+          font-size: 1.5rem;
+          color: white;
+          background-color: navy;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        "
       >
         <!-- Menu Buttons -->
         <div style="position: absolute; left: 0; top: 0; padding: 0; margin: 0">
           <button
             @click="selectMenu('in')"
-            :class="menuSelected == 'in' ? 'menuSelected' : ''"
-            style="height: 2.25rem; width: 5rem"
+            :class="menuSelected == 'in' ? 'menuSelected' : 'notSelected'"
+            class="button-3"
             type="button"
           >
             IN
           </button>
           <button
             @click="selectMenu('out')"
-            :class="menuSelected == 'out' ? 'menuSelected' : ''"
-            style="height: 2.25rem; width: 5rem"
+            :class="menuSelected == 'out' ? 'menuSelected' : 'notSelected'"
+            class="button-3"
             type="button"
           >
             OUT
           </button>
           <button
             @click="selectMenu('edit')"
-            :class="menuSelected == 'edit' ? 'menuSelected' : ''"
-            style="height: 2.25rem; width: 5rem"
+            :class="menuSelected == 'edit' ? 'menuSelected' : 'notSelected'"
+            class="button-3"
             type="button"
           >
             EDIT
@@ -40,14 +45,16 @@
         <!-- Filter Section -->
         <div class="data-uploaded p-0">
           <div class="filter-section">
-            <label for="filter-date">
-              Module Code
-              <label
-                v-if="selectedOption"
-                style="background-color: green; color: white; padding: 5px"
-              >
-                {{ selectedOption }}
-              </label>
+            <label for="filter-date"> Module Code </label>
+            <label
+              style="
+                background-color: green;
+                color: white;
+                padding: 5px;
+                width: 50px;
+              "
+            >
+              {{ selectedOption ? selectedOption : 'All' }}
             </label>
             <div>
               <div class="row">
@@ -72,7 +79,7 @@
             <div class="col-6">
               <div class="filter-section">
                 <label>Part No</label>
-                <input v-model="partNo" type="text" />
+                <input id="partNo" v-model="partNo" v-focus type="text" />
               </div>
               <div v-if="menuSelected === 'edit'" class="filter-section">
                 <label>Qty Remain</label>
@@ -92,8 +99,12 @@
           </div>
 
           <div class="action-buttons">
-            <button @click="clear">Clear</button>
-            <button v-if="menuSelected === 'edit'" @click="editRemainPart">
+            <button @click="clear" class="button-3 menuSelected">Clear</button>
+            <button
+              v-if="menuSelected === 'edit'"
+              @click="editRemainPart"
+              class="button-3 menuSelected"
+            >
               Submit
             </button>
           </div>
@@ -112,7 +123,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(module, index) in uniqueParts" :key="module.M_CODE">
+            <tr
+              v-for="(module, index) in uniqueParts"
+              :key="module.M_CODE"
+              @dblclick="
+                handleDoubleClick(module.MODULE_CODE, module.PART_NUMBER)
+              "
+            >
               <td>{{ module.MODULE_CODE }}</td>
               <td>{{ module.PART_NUMBER }}</td>
               <td>{{ module.PART_NAME }}</td>
@@ -137,7 +154,7 @@ export default {
     return {
       moduleCode: [],
       isDropdownOpen: false,
-      selectedOption: null,
+      selectedOption: '',
       partNo: '',
       partUnique: '',
       partName: '',
@@ -154,19 +171,18 @@ export default {
     this.fetchData()
   },
   computed: {
-    // Menghitung modul unik berdasarkan kode modul
     uniqueModules() {
       return this.moduleCode.reduce((acc, current) => {
         const existing = acc.find((item) => item.M_CODE === current.M_CODE)
         if (existing) {
           existing.count += 1
         } else {
-          acc.push({ ...current, count: current.MODULE_CODE === null ? 0 : 1 })
+          acc.push({ ...current, count: current.MODULE_CODE ? 1 : 0 })
         }
-        return acc
+        console.log(acc)
+        return acc.sort((a, b) => b.count - a.count)
       }, [])
     },
-    // Menghitung part unik berdasarkan kombinasi kode modul dan nomor part
     uniqueParts() {
       return this.partList.reduce((acc, current) => {
         const existing = acc.find(
@@ -184,80 +200,107 @@ export default {
     },
   },
   methods: {
-    // Fetch data dari API
-    fetchData() {
-      axios.get('http://localhost:3000/getMasterPart').then((response) => {
-        this.masterPart = response.data.masterPart
-      })
-      axios.get('http://localhost:3000/getMasterModule').then((response) => {
-        this.masterModule = response.data.masterModule
-        this.moduleCode = response.data.masterModule
-      })
-      axios.get('http://localhost:3000/getContainModule').then((response) => {
-        this.partList = response.data.containModule
-      })
+    async fetchData() {
+      try {
+        const [masterPartRes, masterModuleRes, containModuleRes] =
+          await Promise.all([
+            axios.get('http://localhost:3000/getMasterPart'),
+            axios.get('http://localhost:3000/getMasterModule'),
+            axios.get('http://localhost:3000/getContainModule'),
+          ])
+
+        this.masterPart = masterPartRes.data.masterPart
+        this.masterModule = masterModuleRes.data.masterModule
+        this.moduleCode = masterModuleRes.data.masterModule
+        this.partList = containModuleRes.data.containModule
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
     },
-    // Menghapus filter dan reset data
+
     clear() {
       this.isDropdownOpen = false
-      this.selectedOption = null
+      this.selectedOption = ''
       this.partNo = ''
       this.partUnique = ''
       this.partName = ''
       this.partList = []
     },
-    // Memilih opsi modul
+
     selectOption(option) {
-      this.selectedOption = this.selectedOption === option ? null : option
+      this.selectedOption = this.selectedOption === option ? '' : option
       this.isDropdownOpen = false
     },
-    // Mengatur menu yang dipilih
+
     selectMenu(menu) {
       this.clear()
       this.menuSelected = menu
     },
-    editRemainPart() {
+
+    async editRemainPart() {
       const soundSuccess = new Audio(require('@/assets/audio/success.wav'))
       const soundFailed = new Audio(require('@/assets/audio/fail.wav'))
 
       const filteredPart = this.masterPart.find((part) =>
         this.partNo.includes(part.PART_NO),
       )
-      console.log(this.selectedOption)
 
       if (
         filteredPart &&
         this.qtyRemain !== null &&
         this.selectedOption !== null
       ) {
-        axios
-          .post('http://localhost:3000/setRemainPart', {
+        try {
+          await axios.post('http://localhost:3000/setRemainPart', {
             moduleCode: this.selectedOption,
             partNo: filteredPart.PART_NO,
             countPart: this.qtyRemain,
           })
-          .then(() => {
-            soundSuccess.play()
 
-            axios
-              .get('http://localhost:3000/getMasterModule')
-              .then((response) => {
-                this.masterModule = response.data.masterModule
-                this.moduleCode = response.data.masterModule
-              })
-            this.partNo = ''
-            this.partUnique = ''
-            this.partName = ''
-            this.qtyRemain = null
-          })
+          soundSuccess.play()
+          await this.fetchData()
+          this.clear()
+        } catch (error) {
+          console.error('Error editing remain part:', error)
+          soundFailed.play()
+        }
       }
     },
-    // Mengaplikasikan filter berdasarkan input
-    applyFilters() {
+
+    // async applyFilters() {
+    //   try {
+    //     const partNoCleaned = this.partNo.replaceAll('/', '')
+
+    //     if (this.selectedOption && this.partNo) {
+    //       const { data } = await axios.get(
+    //         `http://localhost:3000/getContainModule/modulePart/${this.selectedOption}/${partNoCleaned}`,
+    //       )
+    //       this.partList = data.containModule
+    //     } else if (this.selectedOption) {
+    //       const { data } = await axios.get(
+    //         `http://localhost:3000/getContainModule/module/${this.selectedOption}`,
+    //       )
+    //       this.partList = data.containModule
+    //     } else if (this.partNo) {
+    //       const { data } = await axios.get(
+    //         `http://localhost:3000/getContainModule/part/${partNoCleaned}`,
+    //       )
+    //       this.partList = data.containModule
+    //     } else {
+    //       const { data } = await axios.get(
+    //         'http://localhost:3000/getContainModule',
+    //       )
+    //       this.partList = data.containModule
+    //     }
+    //   } catch (error) {
+    //     console.error('Error applying filters:', error)
+    //   }
+    // },
+    async applyFilters() {
       const soundSuccess = new Audio(require('@/assets/audio/success.wav'))
       const soundFailed = new Audio(require('@/assets/audio/fail.wav'))
 
-console.log(this.partNo)
+      console.log(this.partNo)
 
       if (this.selectedOption) {
         axios
@@ -274,7 +317,12 @@ console.log(this.partNo)
       }
       if (this.partNo) {
         axios
-          .get(`http://localhost:3000/getContainModule/part/${this.partNo.replaceAll("/", "")}`)
+          .get(
+            `http://localhost:3000/getContainModule/part/${this.partNo.replaceAll(
+              '/',
+              '',
+            )}`,
+          )
           .then((response) => {
             this.partList = response.data.containModule
           })
@@ -282,7 +330,9 @@ console.log(this.partNo)
         if (this.partNo && this.selectedOption) {
           axios
             .get(
-              `http://localhost:3000/getContainModule/modulePart/${this.selectedOption}/${this.partNo.replaceAll("/", "")}`,
+              `http://localhost:3000/getContainModule/modulePart/${
+                this.selectedOption
+              }/${this.partNo.replaceAll('/', '')}`,
             )
             .then((response) => {
               this.partList = response.data.containModule
@@ -357,13 +407,10 @@ console.log(this.partNo)
       }
     },
 
-    // Menangani klik ganda untuk memilih modul dan nomor part
-    handleDoubleClick(moduleCode, partNo) {
-      this.selectedOption = moduleCode
-      this.partNo = partNo
-      this.applyFilters()
+    handleDoubleClick(module, partNo) {
+      this.applyFilters(module, partNo)
     },
-    // Submit data pada menu edit
+
     submit() {
       console.log('Submit action for edit menu')
     },
@@ -482,6 +529,63 @@ console.log(this.partNo)
 }
 
 .menuSelected {
-  background-color: greenyellow;
+  background-color: #2ea44f;
+}
+.notSelected {
+  background-color: #91ac8f;
+}
+/* CSS */
+.button-3 {
+  height: 2.25rem;
+  width: 5rem;
+  appearance: none;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  bottom: 4px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-3:hover {
+  background-color: #2c974b;
+}
+
+.button-3:focus {
+  box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-3:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: default;
+}
+
+.button-3:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
 }
 </style>

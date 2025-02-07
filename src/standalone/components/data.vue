@@ -80,36 +80,42 @@ export default {
       part: 'S116',
       qty: 90,
       stockMinute: 80,
-    },{
+    },
+    {
       part: 'T511',
       qty: 35,
-      stockMinute: 35},
-      {
+      stockMinute: 35,
+    },
+    {
       part: 'T110',
       qty: 75,
-      stockMinute: 200
+      stockMinute: 200,
     },
     {
       part: 'S121',
       qty: 100,
-      stockMinute: 68
-    }, {
-      part: 'S003', 
+      stockMinute: 68,
+    },
+    {
+      part: 'S003',
       qty: 86,
-      stockMinute: 35
-    },{
+      stockMinute: 35,
+    },
+    {
       part: 'S111',
       qty: 35,
-      stockMinute: 97
-    },{
+      stockMinute: 97,
+    },
+    {
       part: 'S501',
       qty: 68,
-      stockMinute: 89
-    },{
+      stockMinute: 89,
+    },
+    {
       part: 'S111',
       qty: 25,
-      stockMinute: 79
-    }
+      stockMinute: 79,
+    },
   ],
 }
 </script>

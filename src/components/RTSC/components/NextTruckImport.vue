@@ -13,7 +13,7 @@
         <div>Next Truck Delivery</div>
       </CListGroup>
 
-      <div class="d-flex" >
+      <div class="d-flex">
         <!-- first -->
         <div style="width: 100%">
           <CListGroup
@@ -28,10 +28,10 @@
             <CCardText>{{ curTruck }}</CCardText>
           </CListGroup>
 
-          <CCardBody style="height: 28.5vh ;background-color: #e0e0e0">
+          <CCardBody style="height: 28.5vh; background-color: #e0e0e0">
             <CCardText>
               <img
-                src={{Truck}}
+                src="{{Truck}}"
                 class="sidebar-brand-narrow"
                 style="position: absolute; left: 35%; top: 10rem"
                 width="30%"
@@ -67,7 +67,7 @@ export default {
   },
   props: {
     curTruck: '',
-  planeTime: '',
+    planeTime: '',
   },
 }
 </script>

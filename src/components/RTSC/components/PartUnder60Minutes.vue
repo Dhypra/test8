@@ -76,7 +76,7 @@ export default {
   data() {
     return {
       criticalPart: data.parts
-        .filter((part) =>  part.stockMinute <= 60 &&part.stockMinute>20)
+        .filter((part) => part.stockMinute <= 60 && part.stockMinute > 20)
         .map((part) => part)
         .sort((a, b) => a.stockMinute - b.stockMinute)
         .slice(0, 9),

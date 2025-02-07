@@ -39,10 +39,12 @@ export default {
   },
 
   mounted() {
-    let underTwenty= data.parts.filter((part) => part.stockMinute < 20).length
-    let underAHour= data.parts.filter((part) => part.stockMinute < 60&&part.stockMinute>20).length
-    let aboveAHour= data.parts.filter((part) => part.stockMinute > 60).length
-    console.log(underTwenty,underAHour,aboveAHour)
+    let underTwenty = data.parts.filter((part) => part.stockMinute < 20).length
+    let underAHour = data.parts.filter(
+      (part) => part.stockMinute < 60 && part.stockMinute > 20,
+    ).length
+    let aboveAHour = data.parts.filter((part) => part.stockMinute > 60).length
+    console.log(underTwenty, underAHour, aboveAHour)
 
     var options = {
       chart: {
@@ -68,7 +70,7 @@ export default {
             },
             {
               x: 'Stock >60min',
-              y: aboveAHour ,
+              y: aboveAHour,
               fillColor: '#ff6600',
               strokeColor: '#C23829',
               style: {

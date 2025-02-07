@@ -623,7 +623,7 @@ export default {
       this.currentTime = `${hours}:${minutes}:${seconds}`
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('fullscreenchange', this.checkFullScreen)
   },
   beforeUnmount() {

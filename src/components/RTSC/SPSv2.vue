@@ -1,5 +1,5 @@
 <template>
-   <!-- <div
+  <!-- <div
     style="
       border-radius: 30px;
       font-weight: bold;
@@ -23,134 +23,143 @@ overflow: hidden;
   <h1 style="font-size:4rem">PJT.Real Time Stock Control</h1>
   <h1 style="font-size:4rem">Go Live:January 2025</h1>
   </div> -->
-  <!-- <h1 style="text-align: center; background-color: black;position: fixed;color: #ffffff;font-size: 6rem;font-weight: bolder ;z-index: 99;width: 90%;margin: 25% 5%">UNDER CONSTRUCTION</h1> -->
-  <div
-    class="sps"
-    style="height: 100vh; overflow: hidden;
-      /* filter: blur(5px); */
-       "
-  >
-
+  <div class="sps" style="height: 100vh; overflow: hidden; filter: blur(2px)">
+    <h1
+      style="
+        text-align: center;
+        background-color: black;
+        position: fixed;
+        color: #ffffff;
+        font-size: 6rem;
+        font-weight: bolder;
+        z-index: 99;
+        width: 90%;
+        margin: 25% 5%;
+      "
+    >
+      UNDER CONSTRUCTION
+    </h1>
     <div class="andon-container">
       <div class="andon-header">
-      <CCard style="border-radius: 15px">
-        <CListGroup
-          style="background-color: #4cadab; color: white; border-radius: 15px"
-          class="text-center"
-        >
-          <div
-            style="
-              text-align: left;
-              font-weight: bold;
-              font-size: 1.5rem;
-              color: #e0e0e0;
-              position: absolute;
-              top: 0;
-              left: -85px;
-            "
+        <CCard style="border-radius: 15px">
+          <CListGroup
+            style="background-color: #4cadab; color: white; border-radius: 15px"
+            class="text-center"
           >
-            <pre>
+            <div
+              style="
+                text-align: left;
+                font-weight: bold;
+                font-size: 1.5rem;
+                color: #e0e0e0;
+                position: absolute;
+                top: 0;
+                left: -85px;
+              "
+            >
+              <pre>
         {{ today }}
         {{ currentTime }} WIB
         {{ shift }} Shift
-      </pre>
-          </div>
-
-          <div>
-            <h1 style="font-size: 8rem; font-weight: 700; margin: 0">
-              STOCK SPS
-            </h1>
-          </div>
-        </CListGroup>
-      </CCard>
-    </div>
-
-    <div class="content-container">
-      <!-- Stock Chart -->
-      <CCard class="content content1">
-        <div class="title">Stock Chart</div>
-
-        <div style="width: 100%;">
-          <CCard style="width: 30%" class="cCard chartPline">
-            <div class="title">P-Lane</div>
-            <div class="chartCard d-flex flex-row bT">
-              <CCard class="col-6 bR fC cardA">10</CCard>
-              <CCard class="col-6 fC cardA">10</CCard>
+      </pre
+              >
             </div>
-          </CCard>
-          <CCardText>
-            <div id="chart"></div>
-          </CCardText>
-        </div>
-      </CCard>
 
-      <!-- Next Delivery -->
-      <CCard class="content content2">
-        <div class="title">Next Fill In</div>
-        <div class="d-flex flex-row">
-          <CCard class="col-6 bR">
-            <div class="title">P-Lane</div>
-            <CCardBody>
-              <CCardText class="fC cardA">8</CCardText>
-            </CCardBody>
-          </CCard>
-          <CCard class="col-6">
-            <div class="title">Counter</div>
-            <CCardBody>
-              <CCardText class="fC cardA">11</CCardText>
-            </CCardBody>
-          </CCard>
-        </div>
-        <CCardFooter class="title footer">30 Min left</CCardFooter>
-      </CCard>
-
-      <!-- Critical Part -->
-      <CCard class="content content3">
-        <div class="title">Critical Part</div>
-
-        <CCardBody style="overflow: hidden" class="container text-center p-0">
-          <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 m-0">
-            <div
-              class="col cTable cCard"
-              style="border-radius: 10px"
-              v-for="(part, index) in criticalPart"
-              :key="index"
-            >
-              <div class="title fZ1">{{ part.part }}</div>
-              <div style="font-size: 2.2rem">{{ part.stockMinute }}Min</div>
-              <div class="fZ1 cPartCard">{{ part.qty }}</div>
+            <div>
+              <h1 style="font-size: 8rem; font-weight: 700; margin: 0">
+                STOCK SPS
+              </h1>
             </div>
-          </div>
-        </CCardBody>
-      </CCard>
+          </CListGroup>
+        </CCard>
+      </div>
 
-      <!-- Out PLane -->
-      <CCard class="content content4">
-        <div class="title">Out Variant</div>
-        <div class="d-flex flex-row">
-          <CCard class="col-6 cCardH">
-            <CCardBody>
-              <CCardText class="fZ3" style="padding-top: 3rem">170</CCardText>
-            </CCardBody>
-          </CCard>
-          <CCard class="col-6 bT">
-            <div class="title">Next Variant</div>
-            <div
-              class="zero bZ"
-              v-for="(part, index) in nextVariant"
-              :key="index"
-            >
-              <div class="title row zero border list">
-                <div class="col-2 zero cPartCard">{{ index + 1 }}</div>
-                <div class="col-10 zero">{{ part.part }}</div>
+      <div class="content-container">
+        <!-- Stock Chart -->
+        <CCard class="content content1">
+          <div class="title">Stock Chart</div>
+
+          <div style="width: 100%">
+            <CCard style="width: 30%" class="cCard chartPline">
+              <div class="title">P-Lane</div>
+              <div class="chartCard d-flex flex-row bT">
+                <CCard class="col-6 bR fC cardA">10</CCard>
+                <CCard class="col-6 fC cardA">10</CCard>
+              </div>
+            </CCard>
+            <CCardText>
+              <div id="chart"></div>
+            </CCardText>
+          </div>
+        </CCard>
+
+        <!-- Next Delivery -->
+        <CCard class="content content2">
+          <div class="title">Next Fill In</div>
+          <div class="d-flex flex-row">
+            <CCard class="col-6 bR">
+              <div class="title">P-Lane</div>
+              <CCardBody>
+                <CCardText class="fC cardA">8</CCardText>
+              </CCardBody>
+            </CCard>
+            <CCard class="col-6">
+              <div class="title">Counter</div>
+              <CCardBody>
+                <CCardText class="fC cardA">11</CCardText>
+              </CCardBody>
+            </CCard>
+          </div>
+          <CCardFooter class="title footer">30 Min left</CCardFooter>
+        </CCard>
+
+        <!-- Critical Part -->
+        <CCard class="content content3">
+          <div class="title">Critical Part</div>
+
+          <CCardBody style="overflow: hidden" class="container text-center p-0">
+            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 m-0">
+              <div
+                class="col cTable cCard"
+                style="border-radius: 10px"
+                v-for="(part, index) in criticalPart"
+                :key="index"
+              >
+                <div class="title fZ1">-</div>
+                <div style="font-size: 2.2rem">-</div>
+                <div class="fZ1 cPartCard">-</div>
               </div>
             </div>
-          </CCard>
-        </div>
-      </CCard>
+          </CCardBody>
+        </CCard>
+
+        <!-- Out PLane -->
+        <CCard class="content content4">
+          <div class="title">Out Variant</div>
+          <div class="d-flex flex-row">
+            <CCard class="col-6 cCardH">
+              <CCardBody>
+                <CCardText class="fZ3" style="padding-top: 3rem">170</CCardText>
+              </CCardBody>
+            </CCard>
+            <CCard class="col-6 bT">
+              <div class="title">Next Variant</div>
+              <div
+                class="zero bZ"
+                v-for="(part, index) in nextVariant"
+                :key="index"
+              >
+                <div class="title row zero border list">
+                  <div class="col-2 zero cPartCard fZ1">{{ index + 1 }}</div>
+                  <div class="col-10 zero">{{ part.part }}</div>
+                </div>
+              </div>
+            </CCard>
+          </div>
+        </CCard>
+      </div>
     </div>
-  </div>
-  <div class="area">
+    <div class="area">
       <ul class="circles">
         <li></li>
         <li></li>
@@ -164,7 +173,7 @@ overflow: hidden;
         <li></li>
       </ul>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -198,11 +207,14 @@ export default {
         .sort((a, b) => a.stockMinute - b.stockMinute)
         .slice(0, 10),
 
-      underTwenty: data.parts.filter((part) => part.stockMinute < 20),
-      underAHour: data.parts.filter(
-        (part) => part.stockMinute > 20 && part.stockMinute < 60
-      ),
-      aboveAHour: data.parts.filter((part) => part.stockMinute > 60),
+      // underTwenty: data.parts.filter((part) => part.stockMinute < 20),
+      // underAHour: data.parts.filter(
+      //   (part) => part.stockMinute > 20 && part.stockMinute < 60,
+      // ),
+      // aboveAHour: data.parts.filter((part) => part.stockMinute > 60),
+      underTwenty: 0,
+      underAHour: 1,
+      aboveAHour: 150,
     }
   },
   mounted() {
@@ -231,9 +243,9 @@ export default {
         {
           name: 'stock',
           data: [
-            { x: 'Stock <20min', y: underTwenty, fillColor: '#f00000' },
-            { x: 'Stock 20-60min', y: underAHour, fillColor: '#228b22' },
-            { x: 'Stock >60min', y: aboveAHour, fillColor: '#ff6600' },
+            { x: 'Stock <20min', y: 0, fillColor: '#f00000' },
+            { x: 'Stock 20-60min', y: 0, fillColor: '#228b22' },
+            { x: 'Stock >60min', y: 150, fillColor: '#ff6600' },
           ],
         },
       ],
@@ -260,7 +272,7 @@ export default {
       if (!document.fullscreenElement) {
         doc.requestFullscreen().catch((err) => {
           alert(
-            `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
+            `Error attempting to enable full-screen mode: ${err.message} (${err.name})`,
           )
         })
       }
@@ -282,7 +294,15 @@ export default {
       this.widthScreen = height
     },
     getNameDay() {
-      const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
+      const days = [
+        'Minggu',
+        'Senin',
+        'Selasa',
+        'Rabu',
+        'Kamis',
+        'Jumat',
+        'Sabtu',
+      ]
       const months = [
         'Januari',
         'Februari',
@@ -316,7 +336,7 @@ export default {
       this.currentTime = `${hours}:${minutes}:${seconds}`
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('fullscreenchange', this.checkFullScreen)
   },
   beforeUnmount() {
@@ -340,7 +360,6 @@ export default {
   text-align: center;
   font-weight: bold;
   padding: 5px 10px;
-
 }
 
 .content-container {

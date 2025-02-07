@@ -501,7 +501,7 @@ body {
 
 .box div span {
   position: absolute;
-  top: 10PX;
+  top: 10px;
   left: 230px;
   display: block;
   width: 100%;
